@@ -1,0 +1,9 @@
+data.aws_vpc.tao_vpc
+aws_subnet.tao_pub_subnet
+aws_subnet.tao_pub_subnet_ipv6
+module.security_group.aws_security_group.allow_web_traffic
+module.security_group.aws_vpc_security_group_egress_rule.allow_all_traffic_ipv4
+module.security_group.aws_vpc_security_group_ingress_rule.allow_http_ipv4
+module.security_group.aws_vpc_security_group_ingress_rule.allow_https_ipv4
+module.security_group.aws_vpc_security_group_ingress_rule.allow_ssh
+module.web_servers.aws_instance.web_server[0]
