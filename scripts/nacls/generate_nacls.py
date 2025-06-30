@@ -37,21 +37,21 @@ def clean_state_show_output(output, tf_name):
     skip_block = False
     skip_stack_depth = 0    
     skip_keys = {
-    "arn",
-    "id",
-    "tags_all",
-    "customer_owned_ipv4_pool",
-    "ipv6_native",
-    "map_customer_owned_ip_on_launch",
-    "outpost_arn",
-    "private_dns_hostname_type_on_launch",
-    "owner_id",
-    "owner_ienable_dns64d",
-    "enable_resource_name_dns_a_record_on_launch",
-    "enable_resource_name_dns_aaaa_record_on_launch",
-    "enable_lni_at_device_index",
-    "availability_zone_id",
-    "ipv6_cidr_block_association_id",
+    # "arn",
+    # "id",
+    # "tags_all",
+    # "customer_owned_ipv4_pool",
+    # "ipv6_native",
+    # "map_customer_owned_ip_on_launch",
+    # "outpost_arn",
+    # "private_dns_hostname_type_on_launch",
+    # "owner_id",
+    # "owner_ienable_dns64d",
+    # "enable_resource_name_dns_a_record_on_launch",
+    # "enable_resource_name_dns_aaaa_record_on_launch",
+    # "enable_lni_at_device_index",
+    # "availability_zone_id",
+    # "ipv6_cidr_block_association_id",
     }
 
     for line in output.splitlines():
@@ -124,50 +124,46 @@ if os.path.isfile(os.path.join(output_dir, import_filename)):
 
 # Iterate over all instances
 for nacl in data["NetworkAcls"]:
-    for n in nacl["Associations"]:
-        nacl_id = n["NetworkAclId"]
-        vpc_id = nacl["VpcId"]
-        cidr_block = nacl["CidrBlock"]
-        map_public_ip = nacl["MapPublicIpOnLaunch"]
-        # Prefer tag "Name" for tf_name, fallback to instance ID
-        name = get_tag(nacl.get("Tags", []), "Name") or nacl_id
-        tf_name = name.replace("-", "_").replace(" ", "_").lower()
+    nacl_id = nacl["NetworkAclId"]
+    vpc_id = nacl["VpcId"]
+    nacl_type = "aws_default_network_acl" if nacl["IsDefault"] else "aws_network_acl"
+    print(nacl_type)
+    # Prefer tag "Name" for tf_name, fallback to instance ID
+    name = get_tag(nacl.get("Tags", []), "Name") or nacl_id
+    tf_name = name.replace("-", "_").replace(" ", "_").lower()
 
-        # Create Terraform block
-        tf_block = f'''
-resource "aws_subnet" "{tf_name}" {{
+    # Create Terraform block
+    tf_block = f'''
+resource "{nacl_type}" "{tf_name}" {{
   vpc_id                  = "{vpc_id}"
-  cidr_block              = "{cidr_block}"
-  availability_zone       = "az"
-  map_public_ip_on_launch = {str(map_public_ip).lower()}
 }}
 '''
     
     with open(os.path.join(output_dir, minimal_filename), "w") as f:
         f.write(tf_block)
     # Run the terraform import
-    import_result = subprocess.run(["terraform", f"-chdir={output_dir}", "import", f"aws_subnet.{tf_name}", nacl_id, "-no-color"], capture_output=True, text=True)
+    import_result = subprocess.run(["terraform", f"-chdir={output_dir}", "import", f"{nacl_type}.{tf_name}", nacl_id, "-no-color"], capture_output=True, text=True)
     if import_result.stderr == '':
-       print(f"Import of aws_subnet.{tf_name} {nacl_id} successful!")
+       print(f"Import of {nacl_type}.{tf_name} {nacl_id} successful!")
        import_count += 1
     else:
-       print(f"Import of aws_subnet.{tf_name} {nacl_id} failed!")
+       print(f"Import of {nacl_type}.{tf_name} {nacl_id} failed!")
        print(import_result.stderr)
     
     print("---------------------------------------------------------------------------------------------------")
 
     # Unimport resources (optional)
-    # subprocess.run(["terraform", f"-chdir={output_dir}", "state", "rm", f"aws_subnet.{tf_name}"])
+    # subprocess.run(["terraform", f"-chdir={output_dir}", "state", "rm", f"{nacl_type}.{tf_name}"])
 
     # Use state show command to build resource block
     if import_result.returncode != 1 :
-        build_result = subprocess.run(["terraform", f"-chdir={output_dir}", "state", "show", f"aws_subnet.{tf_name}", "-no-color"], capture_output=True, text=True)
+        build_result = subprocess.run(["terraform", f"-chdir={output_dir}", "state", "show", f"{nacl_type}.{tf_name}", "-no-color"], capture_output=True, text=True)
         if build_result.returncode == 0:
             cleaned_output = clean_state_show_output(build_result.stdout, tf_name)
             with open(os.path.join(output_dir, import_filename), "a") as tf_file:
                 tf_file.write(cleaned_output + "\n\n" ) 
         else:
-            print(f"Error building resource block for aws_subnet.{tf_name} {nacl_id}!")
+            print(f"Error building resource block for {nacl_type}.{tf_name} {nacl_id}!")
 
 print(f"Successfully imported {import_count} {res_type}(s).")
 

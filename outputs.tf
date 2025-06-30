@@ -1,7 +1,7 @@
-output "web_server_details" {
-  description = "web server details"
-  value       = module.web_servers
-}
+# output "web_server_details" {
+#   description = "web server details"
+#   value       = module.web_servers
+# }
 
 # output "aws_tao_subnet" {
 #   value = aws_subnet.tao_pub_subnet

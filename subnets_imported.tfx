@@ -1,0 +1,174 @@
+resource "aws_subnet" "tao_vpc" {
+    arn                                            = "arn:aws:ec2:us-east-1:339712936044:subnet/subnet-0174f043db86ec93d"
+    assign_ipv6_address_on_creation                = true
+    availability_zone                              = "us-east-1a"
+    availability_zone_id                           = "use1-az2"
+    cidr_block                                     = "10.23.0.0/28"
+    customer_owned_ipv4_pool                       = null
+    enable_dns64                                   = false
+    enable_lni_at_device_index                     = 0
+    enable_resource_name_dns_a_record_on_launch    = false
+    enable_resource_name_dns_aaaa_record_on_launch = false
+    id                                             = "subnet-0174f043db86ec93d"
+    ipv6_cidr_block                                = "2600:1f18:905:d900::/56"
+    ipv6_cidr_block_association_id                 = "subnet-cidr-assoc-04a9c95049de3ea13"
+    ipv6_native                                    = false
+    map_customer_owned_ip_on_launch                = false
+    map_public_ip_on_launch                        = true
+    outpost_arn                                    = null
+    owner_id                                       = "339712936044"
+    private_dns_hostname_type_on_launch            = "ip-name"
+    tags                                           = {
+        "Name" = "tao-vpc"
+    }
+    tags_all                                       = {
+        "Name" = "tao-vpc"
+    }
+    vpc_id                                         = "vpc-0861ff04ba04ae9bd"
+}
+
+resource "aws_subnet" "default_subnet_for_us_west_1a" {
+    arn                                            = "arn:aws:ec2:us-east-1:339712936044:subnet/subnet-068bff19f01604eae"
+    assign_ipv6_address_on_creation                = false
+    availability_zone                              = "us-east-1b"
+    availability_zone_id                           = "use1-az4"
+    cidr_block                                     = "172.31.16.0/20"
+    customer_owned_ipv4_pool                       = null
+    enable_dns64                                   = false
+    enable_lni_at_device_index                     = 0
+    enable_resource_name_dns_a_record_on_launch    = false
+    enable_resource_name_dns_aaaa_record_on_launch = false
+    id                                             = "subnet-068bff19f01604eae"
+    ipv6_cidr_block                                = null
+    ipv6_cidr_block_association_id                 = null
+    ipv6_native                                    = false
+    map_customer_owned_ip_on_launch                = false
+    map_public_ip_on_launch                        = true
+    outpost_arn                                    = null
+    owner_id                                       = "339712936044"
+    private_dns_hostname_type_on_launch            = "ip-name"
+    tags                                           = {
+        "Name" = "Default subnet for us-west-1a"
+    }
+    tags_all                                       = {
+        "Name" = "Default subnet for us-west-1a"
+    }
+    vpc_id                                         = "vpc-0fca234102d21948e"
+}
+
+resource "aws_subnet" "subnet_0ae4bc4baa1fd4f6b" {
+    arn                                            = "arn:aws:ec2:us-east-1:339712936044:subnet/subnet-0ae4bc4baa1fd4f6b"
+    assign_ipv6_address_on_creation                = false
+    availability_zone                              = "us-east-1c"
+    availability_zone_id                           = "use1-az6"
+    cidr_block                                     = "172.31.32.0/20"
+    customer_owned_ipv4_pool                       = null
+    enable_dns64                                   = false
+    enable_lni_at_device_index                     = 0
+    enable_resource_name_dns_a_record_on_launch    = false
+    enable_resource_name_dns_aaaa_record_on_launch = false
+    id                                             = "subnet-0ae4bc4baa1fd4f6b"
+    ipv6_cidr_block                                = null
+    ipv6_cidr_block_association_id                 = null
+    ipv6_native                                    = false
+    map_customer_owned_ip_on_launch                = false
+    map_public_ip_on_launch                        = true
+    outpost_arn                                    = null
+    owner_id                                       = "339712936044"
+    private_dns_hostname_type_on_launch            = "ip-name"
+    tags                                           = {
+        "Key" = "Test"
+    }
+    tags_all                                       = {
+        "Key" = "Test"
+    }
+    vpc_id                                         = "vpc-0fca234102d21948e"
+}
+
+resource "aws_subnet" "subnet_03e8044a610fa3a01" {
+    arn                                            = "arn:aws:ec2:us-east-1:339712936044:subnet/subnet-03e8044a610fa3a01"
+    assign_ipv6_address_on_creation                = false
+    availability_zone                              = "us-east-1e"
+    availability_zone_id                           = "use1-az3"
+    cidr_block                                     = "172.31.48.0/20"
+    customer_owned_ipv4_pool                       = null
+    enable_dns64                                   = false
+    enable_lni_at_device_index                     = 0
+    enable_resource_name_dns_a_record_on_launch    = false
+    enable_resource_name_dns_aaaa_record_on_launch = false
+    id                                             = "subnet-03e8044a610fa3a01"
+    ipv6_cidr_block                                = null
+    ipv6_cidr_block_association_id                 = null
+    ipv6_native                                    = false
+    map_customer_owned_ip_on_launch                = false
+    map_public_ip_on_launch                        = true
+    outpost_arn                                    = null
+    owner_id                                       = "339712936044"
+    private_dns_hostname_type_on_launch            = "ip-name"
+    tags                                           = {
+        "Key" = "Test"
+    }
+    tags_all                                       = {
+        "Key" = "Test"
+    }
+    vpc_id                                         = "vpc-0fca234102d21948e"
+}
+
+resource "aws_subnet" "subnet_0333a74cfe3de7e09" {
+    arn                                            = "arn:aws:ec2:us-east-1:339712936044:subnet/subnet-0333a74cfe3de7e09"
+    assign_ipv6_address_on_creation                = false
+    availability_zone                              = "us-east-1d"
+    availability_zone_id                           = "use1-az1"
+    cidr_block                                     = "172.31.0.0/20"
+    customer_owned_ipv4_pool                       = null
+    enable_dns64                                   = false
+    enable_lni_at_device_index                     = 0
+    enable_resource_name_dns_a_record_on_launch    = false
+    enable_resource_name_dns_aaaa_record_on_launch = false
+    id                                             = "subnet-0333a74cfe3de7e09"
+    ipv6_cidr_block                                = null
+    ipv6_cidr_block_association_id                 = null
+    ipv6_native                                    = false
+    map_customer_owned_ip_on_launch                = false
+    map_public_ip_on_launch                        = true
+    outpost_arn                                    = null
+    owner_id                                       = "339712936044"
+    private_dns_hostname_type_on_launch            = "ip-name"
+    tags                                           = {
+        "Key" = "Test"
+    }
+    tags_all                                       = {
+        "Key" = "Test"
+    }
+    vpc_id                                         = "vpc-0fca234102d21948e"
+}
+
+resource "aws_subnet" "subnet_0b758a523da70ff65" {
+    arn                                            = "arn:aws:ec2:us-east-1:339712936044:subnet/subnet-0b758a523da70ff65"
+    assign_ipv6_address_on_creation                = false
+    availability_zone                              = "us-east-1f"
+    availability_zone_id                           = "use1-az5"
+    cidr_block                                     = "172.31.64.0/20"
+    customer_owned_ipv4_pool                       = null
+    enable_dns64                                   = false
+    enable_lni_at_device_index                     = 0
+    enable_resource_name_dns_a_record_on_launch    = false
+    enable_resource_name_dns_aaaa_record_on_launch = false
+    id                                             = "subnet-0b758a523da70ff65"
+    ipv6_cidr_block                                = null
+    ipv6_cidr_block_association_id                 = null
+    ipv6_native                                    = false
+    map_customer_owned_ip_on_launch                = false
+    map_public_ip_on_launch                        = true
+    outpost_arn                                    = null
+    owner_id                                       = "339712936044"
+    private_dns_hostname_type_on_launch            = "ip-name"
+    tags                                           = {
+        "Key" = "Test"
+    }
+    tags_all                                       = {
+        "Key" = "Test"
+    }
+    vpc_id                                         = "vpc-0fca234102d21948e"
+}
+

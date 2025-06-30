@@ -1,0 +1,311 @@
+resource "aws_instance" "drugstoc_prom_grafana" {
+    ami                                  = "ami-04b4f1a9cf54c11d0"
+    arn                                  = "arn:aws:ec2:us-east-1:339712936044:instance/i-0818a3a5682b6242a"
+    associate_public_ip_address          = false
+    availability_zone                    = "us-east-1b"
+    cpu_core_count                       = 1
+    cpu_threads_per_core                 = 1
+    disable_api_stop                     = false
+    disable_api_termination              = false
+    ebs_optimized                        = false
+    get_password_data                    = false
+    hibernation                          = false
+    host_id                              = null
+    iam_instance_profile                 = null
+    id                                   = "i-0818a3a5682b6242a"
+    instance_initiated_shutdown_behavior = "stop"
+    instance_lifecycle                   = null
+    instance_state                       = "stopped"
+    instance_type                        = "t2.small"
+    ipv6_address_count                   = 0
+    ipv6_addresses                       = []
+    key_name                             = "Us-East-KP"
+    monitoring                           = false
+    outpost_arn                          = null
+    password_data                        = null
+    placement_group                      = null
+    placement_partition_number           = 0
+    primary_network_interface_id         = "eni-0b6b0a3729f34ba2b"
+    private_dns                          = "ip-172-31-17-57.ec2.internal"
+    private_ip                           = "172.31.17.57"
+    public_dns                           = null
+    public_ip                            = null
+    secondary_private_ips                = []
+    security_groups                      = [
+        "all-out-ssh-in-sg",
+    ]
+    source_dest_check                    = true
+    spot_instance_request_id             = null
+    subnet_id                            = "subnet-068bff19f01604eae"
+    tags                                 = {
+        "Name" = "drugstoc-prom-grafana"
+    }
+    tags_all                             = {
+        "Name" = "drugstoc-prom-grafana"
+    }
+    tenancy                              = "default"
+    vpc_security_group_ids               = [
+        "sg-061698ee1e25d2fad",
+    ]
+
+    capacity_reservation_specification {
+        capacity_reservation_preference = "open"
+    }
+
+    cpu_options {
+        amd_sev_snp      = null
+        core_count       = 1
+        threads_per_core = 1
+    }
+
+    credit_specification {
+        cpu_credits = "standard"
+    }
+
+    enclave_options {
+        enabled = false
+    }
+
+    maintenance_options {
+        auto_recovery = "default"
+    }
+
+    metadata_options {
+        http_endpoint               = "enabled"
+        http_protocol_ipv6          = "disabled"
+        http_put_response_hop_limit = 2
+        http_tokens                 = "required"
+        instance_metadata_tags      = "disabled"
+    }
+
+    private_dns_name_options {
+        enable_resource_name_dns_a_record    = true
+        enable_resource_name_dns_aaaa_record = false
+        hostname_type                        = "ip-name"
+    }
+
+    root_block_device {
+        delete_on_termination = true
+        device_name           = "/dev/sda1"
+        encrypted             = false
+        iops                  = 3000
+        kms_key_id            = null
+        tags                  = {}
+        tags_all              = {}
+        throughput            = 125
+        volume_id             = "vol-0ebf19d7e2ccbefca"
+        volume_size           = 8
+        volume_type           = "gp3"
+    }
+}
+
+resource "aws_instance" "server11" {
+    ami                                  = "ami-05ffe3c48a9991133"
+    arn                                  = "arn:aws:ec2:us-east-1:339712936044:instance/i-0f2fc8e8d810f1314"
+    associate_public_ip_address          = false
+    availability_zone                    = "us-east-1a"
+    cpu_core_count                       = 1
+    cpu_threads_per_core                 = 1
+    disable_api_stop                     = false
+    disable_api_termination              = false
+    ebs_optimized                        = false
+    get_password_data                    = false
+    hibernation                          = false
+    host_id                              = null
+    iam_instance_profile                 = null
+    id                                   = "i-0f2fc8e8d810f1314"
+    instance_initiated_shutdown_behavior = "stop"
+    instance_lifecycle                   = null
+    instance_state                       = "stopped"
+    instance_type                        = "t2.micro"
+    ipv6_address_count                   = 0
+    ipv6_addresses                       = []
+    key_name                             = "Us-East-KP"
+    monitoring                           = false
+    outpost_arn                          = null
+    password_data                        = null
+    placement_group                      = null
+    placement_partition_number           = 0
+    primary_network_interface_id         = "eni-04689a11332777362"
+    private_dns                          = "ip-172-31-95-85.ec2.internal"
+    private_ip                           = "172.31.95.85"
+    public_dns                           = null
+    public_ip                            = null
+    secondary_private_ips                = []
+    security_groups                      = [
+        "all-out-ssh-in-sg",
+    ]
+    source_dest_check                    = true
+    spot_instance_request_id             = null
+    subnet_id                            = "subnet-0ec729c87fee32f90"
+    tags                                 = {
+        "Name"  = "server11"
+        "Owner" = "Tao"
+    }
+    tags_all                             = {
+        "Name"  = "server11"
+        "Owner" = "Tao"
+    }
+    tenancy                              = "default"
+    vpc_security_group_ids               = [
+        "sg-061698ee1e25d2fad",
+    ]
+
+    capacity_reservation_specification {
+        capacity_reservation_preference = "open"
+    }
+
+    cpu_options {
+        amd_sev_snp      = null
+        core_count       = 1
+        threads_per_core = 1
+    }
+
+    credit_specification {
+        cpu_credits = "standard"
+    }
+
+    enclave_options {
+        enabled = false
+    }
+
+    maintenance_options {
+        auto_recovery = "default"
+    }
+
+    metadata_options {
+        http_endpoint               = "enabled"
+        http_protocol_ipv6          = "disabled"
+        http_put_response_hop_limit = 2
+        http_tokens                 = "required"
+        instance_metadata_tags      = "disabled"
+    }
+
+    private_dns_name_options {
+        enable_resource_name_dns_a_record    = true
+        enable_resource_name_dns_aaaa_record = false
+        hostname_type                        = "ip-name"
+    }
+
+    root_block_device {
+        delete_on_termination = true
+        device_name           = "/dev/xvda"
+        encrypted             = false
+        iops                  = 3000
+        kms_key_id            = null
+        tags                  = {
+            "Name"  = "server11"
+            "Owner" = "Tao"
+        }
+        tags_all              = {
+            "Name"  = "server11"
+            "Owner" = "Tao"
+        }
+        throughput            = 125
+        volume_id             = "vol-0f6e31a589e4db0ad"
+        volume_size           = 8
+        volume_type           = "gp3"
+    }
+}
+
+resource "aws_instance" "test_44" {
+    ami                                  = "ami-020cba7c55df1f615"
+    arn                                  = "arn:aws:ec2:us-east-1:339712936044:instance/i-078e61d2031c30099"
+    associate_public_ip_address          = false
+    availability_zone                    = "us-east-1a"
+    cpu_core_count                       = 1
+    cpu_threads_per_core                 = 1
+    disable_api_stop                     = false
+    disable_api_termination              = false
+    ebs_optimized                        = false
+    get_password_data                    = false
+    hibernation                          = false
+    host_id                              = null
+    iam_instance_profile                 = null
+    id                                   = "i-078e61d2031c30099"
+    instance_initiated_shutdown_behavior = "stop"
+    instance_lifecycle                   = null
+    instance_state                       = "stopped"
+    instance_type                        = "t2.micro"
+    ipv6_address_count                   = 0
+    ipv6_addresses                       = []
+    key_name                             = "Us-East-KP"
+    monitoring                           = false
+    outpost_arn                          = null
+    password_data                        = null
+    placement_group                      = null
+    placement_partition_number           = 0
+    primary_network_interface_id         = "eni-0cd4875296a707644"
+    private_dns                          = "ip-172-31-89-86.ec2.internal"
+    private_ip                           = "172.31.89.86"
+    public_dns                           = null
+    public_ip                            = null
+    secondary_private_ips                = []
+    security_groups                      = [
+        "launch-wizard-8",
+    ]
+    source_dest_check                    = true
+    spot_instance_request_id             = null
+    subnet_id                            = "subnet-0ec729c87fee32f90"
+    tags                                 = {
+        "Name" = "test-44"
+    }
+    tags_all                             = {
+        "Name" = "test-44"
+    }
+    tenancy                              = "default"
+    vpc_security_group_ids               = [
+        "sg-0768f3464688d37b4",
+    ]
+
+    capacity_reservation_specification {
+        capacity_reservation_preference = "open"
+    }
+
+    cpu_options {
+        amd_sev_snp      = null
+        core_count       = 1
+        threads_per_core = 1
+    }
+
+    credit_specification {
+        cpu_credits = "standard"
+    }
+
+    enclave_options {
+        enabled = false
+    }
+
+    maintenance_options {
+        auto_recovery = "default"
+    }
+
+    metadata_options {
+        http_endpoint               = "enabled"
+        http_protocol_ipv6          = "disabled"
+        http_put_response_hop_limit = 2
+        http_tokens                 = "required"
+        instance_metadata_tags      = "disabled"
+    }
+
+    private_dns_name_options {
+        enable_resource_name_dns_a_record    = true
+        enable_resource_name_dns_aaaa_record = false
+        hostname_type                        = "ip-name"
+    }
+
+    root_block_device {
+        delete_on_termination = true
+        device_name           = "/dev/sda1"
+        encrypted             = false
+        iops                  = 3000
+        kms_key_id            = null
+        tags                  = {}
+        tags_all              = {}
+        throughput            = 125
+        volume_id             = "vol-0cd1832b811cffed4"
+        volume_size           = 8
+        volume_type           = "gp3"
+    }
+}
+

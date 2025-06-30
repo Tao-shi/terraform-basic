@@ -1,15 +1,15 @@
-import {
-  id = "subnet-0438e34d75bba71db"
-  to = aws_subnet.tao_pub_subnet_ipv6
-}
+# import {
+#   id = "subnet-0438e34d75bba71db"
+#   to = aws_subnet.tao_pub_subnet_ipv6
+# }
 
-import {
-  id = "tao-test-222"
-  to = aws_s3_bucket.buck
-}
+# import {
+#   id = "tao-test-222"
+#   to = aws_s3_bucket.buck
+# }
 
-resource "aws_s3_bucket" "buck" {
-}
+# resource "aws_s3_bucket" "buck" {
+# }
 # resource "aws_subnet" "tao_ipv6" {
 #   vpc_id = "vpc-0861ff04ba04ae9bd"
 #   tags = {
@@ -21,17 +21,17 @@ resource "aws_s3_bucket" "buck" {
 #   }
 # }
 
-resource "aws_subnet" "tao_pub_subnet_ipv6" {
-  vpc_id          = data.aws_vpc.tao_vpc.id
-  ipv6_cidr_block = "2600:1f18:905:d900::/56"
-  tags = {
-    "Name" = "tao-vpc"
-  }
-  cidr_block                      = "10.23.0.0/28"
-  map_public_ip_on_launch         = true
-  assign_ipv6_address_on_creation = true
+# resource "aws_subnet" "tao_pub_subnet_ipv6" {
+#   vpc_id          = data.aws_vpc.tao_vpc.id
+#   ipv6_cidr_block = "2600:1f18:905:d900::/56"
+#   tags = {
+#     "Name" = "tao-vpc"
+#   }
+#   cidr_block                      = "10.23.0.0/28"
+#   map_public_ip_on_launch         = true
+#   assign_ipv6_address_on_creation = true
 
-}
+# }
 
 # 1. create import resource and add important attributes
 # 2. import the resource

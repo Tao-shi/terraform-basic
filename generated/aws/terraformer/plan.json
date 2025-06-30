@@ -1,0 +1,1221 @@
+{
+	"Version": "v0.8.30",
+	"Provider": "aws",
+	"Options": {
+		"Resources": [
+			"sg"
+		],
+		"Excludes": [],
+		"PathPattern": "{output}/{provider}/{service}/",
+		"PathOutput": "generated",
+		"State": "local",
+		"Bucket": "",
+		"Profile": "default",
+		"Verbose": false,
+		"Zone": "",
+		"Regions": [
+			"us-east-1"
+		],
+		"Projects": null,
+		"ResourceGroup": "",
+		"Connect": true,
+		"Compact": false,
+		"Filter": [],
+		"Output": "hcl",
+		"NoSort": false,
+		"RetryCount": 5,
+		"RetrySleepMs": 300
+	},
+	"Args": [
+		"us-east-1",
+		"default"
+	],
+	"ImportedResource": {
+		"sg": [
+			{
+				"InstanceInfo": {
+					"Id": "aws_security_group.tfer--default_sg-0bde661d3c96ae7d1",
+					"ModulePath": null,
+					"Type": "aws_security_group"
+				},
+				"InstanceState": {
+					"id": "sg-0bde661d3c96ae7d1",
+					"attributes": {
+						"arn": "arn:aws:ec2:us-east-1:339712936044:security-group/sg-0bde661d3c96ae7d1",
+						"description": "default VPC security group",
+						"egress.#": "1",
+						"egress.0.cidr_blocks.#": "1",
+						"egress.0.cidr_blocks.0": "0.0.0.0/0",
+						"egress.0.description": "",
+						"egress.0.from_port": "0",
+						"egress.0.ipv6_cidr_blocks.#": "0",
+						"egress.0.prefix_list_ids.#": "0",
+						"egress.0.protocol": "-1",
+						"egress.0.security_groups.#": "0",
+						"egress.0.self": "false",
+						"egress.0.to_port": "0",
+						"id": "sg-0bde661d3c96ae7d1",
+						"ingress.#": "1",
+						"ingress.0.cidr_blocks.#": "0",
+						"ingress.0.description": "",
+						"ingress.0.from_port": "0",
+						"ingress.0.ipv6_cidr_blocks.#": "0",
+						"ingress.0.prefix_list_ids.#": "0",
+						"ingress.0.protocol": "-1",
+						"ingress.0.security_groups.#": "0",
+						"ingress.0.self": "true",
+						"ingress.0.to_port": "0",
+						"name": "default",
+						"name_prefix": "",
+						"owner_id": "339712936044",
+						"tags.%": "1",
+						"tags.Key": "Test",
+						"tags_all.%": "1",
+						"tags_all.Key": "Test",
+						"vpc_id": "vpc-0fca234102d21948e"
+					},
+					"meta": {
+						"schema_version": 1
+					},
+					"tainted": false
+				},
+				"ResourceName": "tfer--default_sg-0bde661d3c96ae7d1",
+				"Provider": "aws",
+				"Item": {
+					"description": "default VPC security group",
+					"egress": [
+						{
+							"cidr_blocks": [
+								"0.0.0.0/0"
+							],
+							"from_port": "0",
+							"protocol": "-1",
+							"self": "false",
+							"to_port": "0"
+						}
+					],
+					"ingress": [
+						{
+							"from_port": "0",
+							"protocol": "-1",
+							"self": "true",
+							"to_port": "0"
+						}
+					],
+					"name": "default",
+					"tags": {
+						"Key": "Test"
+					},
+					"tags_all": {
+						"Key": "Test"
+					},
+					"vpc_id": "vpc-0fca234102d21948e"
+				},
+				"IgnoreKeys": [
+					"^id$",
+					"^owner_id$",
+					"^arn$"
+				],
+				"AllowEmptyValues": [
+					"tags."
+				],
+				"SlowQueryRequired": false,
+				"DataFiles": null
+			},
+			{
+				"InstanceInfo": {
+					"Id": "aws_security_group.tfer--launch-wizard-7_sg-095927bca97cb50e1",
+					"ModulePath": null,
+					"Type": "aws_security_group"
+				},
+				"InstanceState": {
+					"id": "sg-095927bca97cb50e1",
+					"attributes": {
+						"arn": "arn:aws:ec2:us-east-1:339712936044:security-group/sg-095927bca97cb50e1",
+						"description": "launch-wizard-7 created 2025-06-08T17:16:34.551Z",
+						"egress.#": "1",
+						"egress.0.cidr_blocks.#": "1",
+						"egress.0.cidr_blocks.0": "0.0.0.0/0",
+						"egress.0.description": "",
+						"egress.0.from_port": "0",
+						"egress.0.ipv6_cidr_blocks.#": "1",
+						"egress.0.ipv6_cidr_blocks.0": "::/0",
+						"egress.0.prefix_list_ids.#": "0",
+						"egress.0.protocol": "-1",
+						"egress.0.security_groups.#": "0",
+						"egress.0.self": "false",
+						"egress.0.to_port": "0",
+						"id": "sg-095927bca97cb50e1",
+						"ingress.#": "1",
+						"ingress.0.cidr_blocks.#": "1",
+						"ingress.0.cidr_blocks.0": "0.0.0.0/0",
+						"ingress.0.description": "",
+						"ingress.0.from_port": "22",
+						"ingress.0.ipv6_cidr_blocks.#": "0",
+						"ingress.0.prefix_list_ids.#": "0",
+						"ingress.0.protocol": "tcp",
+						"ingress.0.security_groups.#": "0",
+						"ingress.0.self": "false",
+						"ingress.0.to_port": "22",
+						"name": "launch-wizard-7",
+						"name_prefix": "",
+						"owner_id": "339712936044",
+						"tags.%": "0",
+						"tags_all.%": "0",
+						"vpc_id": "vpc-0861ff04ba04ae9bd"
+					},
+					"meta": {
+						"schema_version": 1
+					},
+					"tainted": false
+				},
+				"ResourceName": "tfer--launch-wizard-7_sg-095927bca97cb50e1",
+				"Provider": "aws",
+				"Item": {
+					"description": "launch-wizard-7 created 2025-06-08T17:16:34.551Z",
+					"egress": [
+						{
+							"cidr_blocks": [
+								"0.0.0.0/0"
+							],
+							"from_port": "0",
+							"ipv6_cidr_blocks": [
+								"::/0"
+							],
+							"protocol": "-1",
+							"self": "false",
+							"to_port": "0"
+						}
+					],
+					"ingress": [
+						{
+							"cidr_blocks": [
+								"0.0.0.0/0"
+							],
+							"from_port": "22",
+							"protocol": "tcp",
+							"self": "false",
+							"to_port": "22"
+						}
+					],
+					"name": "launch-wizard-7",
+					"vpc_id": "vpc-0861ff04ba04ae9bd"
+				},
+				"IgnoreKeys": [
+					"^id$",
+					"^owner_id$",
+					"^arn$"
+				],
+				"AllowEmptyValues": [
+					"tags."
+				],
+				"SlowQueryRequired": false,
+				"DataFiles": null
+			},
+			{
+				"InstanceInfo": {
+					"Id": "aws_security_group.tfer--launch-wizard-4_sg-02d5b2a115d9ea277",
+					"ModulePath": null,
+					"Type": "aws_security_group"
+				},
+				"InstanceState": {
+					"id": "sg-02d5b2a115d9ea277",
+					"attributes": {
+						"arn": "arn:aws:ec2:us-east-1:339712936044:security-group/sg-02d5b2a115d9ea277",
+						"description": "launch-wizard-4 created 2025-02-04T12:18:41.652Z",
+						"egress.#": "1",
+						"egress.0.cidr_blocks.#": "1",
+						"egress.0.cidr_blocks.0": "0.0.0.0/0",
+						"egress.0.description": "",
+						"egress.0.from_port": "0",
+						"egress.0.ipv6_cidr_blocks.#": "0",
+						"egress.0.prefix_list_ids.#": "0",
+						"egress.0.protocol": "-1",
+						"egress.0.security_groups.#": "0",
+						"egress.0.self": "false",
+						"egress.0.to_port": "0",
+						"id": "sg-02d5b2a115d9ea277",
+						"ingress.#": "3",
+						"ingress.0.cidr_blocks.#": "1",
+						"ingress.0.cidr_blocks.0": "0.0.0.0/0",
+						"ingress.0.description": "",
+						"ingress.0.from_port": "22",
+						"ingress.0.ipv6_cidr_blocks.#": "0",
+						"ingress.0.prefix_list_ids.#": "0",
+						"ingress.0.protocol": "tcp",
+						"ingress.0.security_groups.#": "0",
+						"ingress.0.self": "false",
+						"ingress.0.to_port": "22",
+						"ingress.1.cidr_blocks.#": "1",
+						"ingress.1.cidr_blocks.0": "0.0.0.0/0",
+						"ingress.1.description": "",
+						"ingress.1.from_port": "443",
+						"ingress.1.ipv6_cidr_blocks.#": "0",
+						"ingress.1.prefix_list_ids.#": "0",
+						"ingress.1.protocol": "tcp",
+						"ingress.1.security_groups.#": "0",
+						"ingress.1.self": "false",
+						"ingress.1.to_port": "443",
+						"ingress.2.cidr_blocks.#": "1",
+						"ingress.2.cidr_blocks.0": "0.0.0.0/0",
+						"ingress.2.description": "",
+						"ingress.2.from_port": "80",
+						"ingress.2.ipv6_cidr_blocks.#": "0",
+						"ingress.2.prefix_list_ids.#": "0",
+						"ingress.2.protocol": "tcp",
+						"ingress.2.security_groups.#": "0",
+						"ingress.2.self": "false",
+						"ingress.2.to_port": "80",
+						"name": "launch-wizard-4",
+						"name_prefix": "",
+						"owner_id": "339712936044",
+						"tags.%": "0",
+						"tags_all.%": "0",
+						"vpc_id": "vpc-0fca234102d21948e"
+					},
+					"meta": {
+						"schema_version": 1
+					},
+					"tainted": false
+				},
+				"ResourceName": "tfer--launch-wizard-4_sg-02d5b2a115d9ea277",
+				"Provider": "aws",
+				"Item": {
+					"description": "launch-wizard-4 created 2025-02-04T12:18:41.652Z",
+					"egress": [
+						{
+							"cidr_blocks": [
+								"0.0.0.0/0"
+							],
+							"from_port": "0",
+							"protocol": "-1",
+							"self": "false",
+							"to_port": "0"
+						}
+					],
+					"ingress": [
+						{
+							"cidr_blocks": [
+								"0.0.0.0/0"
+							],
+							"from_port": "22",
+							"protocol": "tcp",
+							"self": "false",
+							"to_port": "22"
+						},
+						{
+							"cidr_blocks": [
+								"0.0.0.0/0"
+							],
+							"from_port": "443",
+							"protocol": "tcp",
+							"self": "false",
+							"to_port": "443"
+						},
+						{
+							"cidr_blocks": [
+								"0.0.0.0/0"
+							],
+							"from_port": "80",
+							"protocol": "tcp",
+							"self": "false",
+							"to_port": "80"
+						}
+					],
+					"name": "launch-wizard-4",
+					"vpc_id": "vpc-0fca234102d21948e"
+				},
+				"IgnoreKeys": [
+					"^id$",
+					"^owner_id$",
+					"^arn$"
+				],
+				"AllowEmptyValues": [
+					"tags."
+				],
+				"SlowQueryRequired": false,
+				"DataFiles": null
+			},
+			{
+				"InstanceInfo": {
+					"Id": "aws_security_group.tfer--launch-wizard-6_sg-091b995f255283626",
+					"ModulePath": null,
+					"Type": "aws_security_group"
+				},
+				"InstanceState": {
+					"id": "sg-091b995f255283626",
+					"attributes": {
+						"arn": "arn:aws:ec2:us-east-1:339712936044:security-group/sg-091b995f255283626",
+						"description": "launch-wizard-6 created 2025-06-05T11:36:06.305Z",
+						"egress.#": "1",
+						"egress.0.cidr_blocks.#": "1",
+						"egress.0.cidr_blocks.0": "0.0.0.0/0",
+						"egress.0.description": "",
+						"egress.0.from_port": "0",
+						"egress.0.ipv6_cidr_blocks.#": "1",
+						"egress.0.ipv6_cidr_blocks.0": "::/0",
+						"egress.0.prefix_list_ids.#": "0",
+						"egress.0.protocol": "-1",
+						"egress.0.security_groups.#": "0",
+						"egress.0.self": "false",
+						"egress.0.to_port": "0",
+						"id": "sg-091b995f255283626",
+						"ingress.#": "1",
+						"ingress.0.cidr_blocks.#": "1",
+						"ingress.0.cidr_blocks.0": "0.0.0.0/0",
+						"ingress.0.description": "",
+						"ingress.0.from_port": "22",
+						"ingress.0.ipv6_cidr_blocks.#": "0",
+						"ingress.0.prefix_list_ids.#": "0",
+						"ingress.0.protocol": "tcp",
+						"ingress.0.security_groups.#": "0",
+						"ingress.0.self": "false",
+						"ingress.0.to_port": "22",
+						"name": "launch-wizard-6",
+						"name_prefix": "",
+						"owner_id": "339712936044",
+						"tags.%": "0",
+						"tags_all.%": "0",
+						"vpc_id": "vpc-0861ff04ba04ae9bd"
+					},
+					"meta": {
+						"schema_version": 1
+					},
+					"tainted": false
+				},
+				"ResourceName": "tfer--launch-wizard-6_sg-091b995f255283626",
+				"Provider": "aws",
+				"Item": {
+					"description": "launch-wizard-6 created 2025-06-05T11:36:06.305Z",
+					"egress": [
+						{
+							"cidr_blocks": [
+								"0.0.0.0/0"
+							],
+							"from_port": "0",
+							"ipv6_cidr_blocks": [
+								"::/0"
+							],
+							"protocol": "-1",
+							"self": "false",
+							"to_port": "0"
+						}
+					],
+					"ingress": [
+						{
+							"cidr_blocks": [
+								"0.0.0.0/0"
+							],
+							"from_port": "22",
+							"protocol": "tcp",
+							"self": "false",
+							"to_port": "22"
+						}
+					],
+					"name": "launch-wizard-6",
+					"vpc_id": "vpc-0861ff04ba04ae9bd"
+				},
+				"IgnoreKeys": [
+					"^id$",
+					"^owner_id$",
+					"^arn$"
+				],
+				"AllowEmptyValues": [
+					"tags."
+				],
+				"SlowQueryRequired": false,
+				"DataFiles": null
+			},
+			{
+				"InstanceInfo": {
+					"Id": "aws_security_group.tfer--default_sg-0a1ca2be00f99fedf",
+					"ModulePath": null,
+					"Type": "aws_security_group"
+				},
+				"InstanceState": {
+					"id": "sg-0a1ca2be00f99fedf",
+					"attributes": {
+						"arn": "arn:aws:ec2:us-east-1:339712936044:security-group/sg-0a1ca2be00f99fedf",
+						"description": "default VPC security group",
+						"egress.#": "1",
+						"egress.0.cidr_blocks.#": "1",
+						"egress.0.cidr_blocks.0": "0.0.0.0/0",
+						"egress.0.description": "",
+						"egress.0.from_port": "0",
+						"egress.0.ipv6_cidr_blocks.#": "1",
+						"egress.0.ipv6_cidr_blocks.0": "::/0",
+						"egress.0.prefix_list_ids.#": "0",
+						"egress.0.protocol": "-1",
+						"egress.0.security_groups.#": "0",
+						"egress.0.self": "false",
+						"egress.0.to_port": "0",
+						"id": "sg-0a1ca2be00f99fedf",
+						"ingress.#": "1",
+						"ingress.0.cidr_blocks.#": "0",
+						"ingress.0.description": "",
+						"ingress.0.from_port": "0",
+						"ingress.0.ipv6_cidr_blocks.#": "0",
+						"ingress.0.prefix_list_ids.#": "0",
+						"ingress.0.protocol": "-1",
+						"ingress.0.security_groups.#": "0",
+						"ingress.0.self": "true",
+						"ingress.0.to_port": "0",
+						"name": "default",
+						"name_prefix": "",
+						"owner_id": "339712936044",
+						"tags.%": "0",
+						"tags_all.%": "0",
+						"vpc_id": "vpc-0861ff04ba04ae9bd"
+					},
+					"meta": {
+						"schema_version": 1
+					},
+					"tainted": false
+				},
+				"ResourceName": "tfer--default_sg-0a1ca2be00f99fedf",
+				"Provider": "aws",
+				"Item": {
+					"description": "default VPC security group",
+					"egress": [
+						{
+							"cidr_blocks": [
+								"0.0.0.0/0"
+							],
+							"from_port": "0",
+							"ipv6_cidr_blocks": [
+								"::/0"
+							],
+							"protocol": "-1",
+							"self": "false",
+							"to_port": "0"
+						}
+					],
+					"ingress": [
+						{
+							"from_port": "0",
+							"protocol": "-1",
+							"self": "true",
+							"to_port": "0"
+						}
+					],
+					"name": "default",
+					"vpc_id": "vpc-0861ff04ba04ae9bd"
+				},
+				"IgnoreKeys": [
+					"^id$",
+					"^owner_id$",
+					"^arn$"
+				],
+				"AllowEmptyValues": [
+					"tags."
+				],
+				"SlowQueryRequired": false,
+				"DataFiles": null
+			},
+			{
+				"InstanceInfo": {
+					"Id": "aws_security_group.tfer--launch-wizard-3_sg-024754d3a5a15e59d",
+					"ModulePath": null,
+					"Type": "aws_security_group"
+				},
+				"InstanceState": {
+					"id": "sg-024754d3a5a15e59d",
+					"attributes": {
+						"arn": "arn:aws:ec2:us-east-1:339712936044:security-group/sg-024754d3a5a15e59d",
+						"description": "launch-wizard-3 created 2024-12-19T19:14:02.833Z",
+						"egress.#": "1",
+						"egress.0.cidr_blocks.#": "1",
+						"egress.0.cidr_blocks.0": "0.0.0.0/0",
+						"egress.0.description": "",
+						"egress.0.from_port": "0",
+						"egress.0.ipv6_cidr_blocks.#": "0",
+						"egress.0.prefix_list_ids.#": "0",
+						"egress.0.protocol": "-1",
+						"egress.0.security_groups.#": "0",
+						"egress.0.self": "false",
+						"egress.0.to_port": "0",
+						"id": "sg-024754d3a5a15e59d",
+						"ingress.#": "1",
+						"ingress.0.cidr_blocks.#": "1",
+						"ingress.0.cidr_blocks.0": "0.0.0.0/0",
+						"ingress.0.description": "",
+						"ingress.0.from_port": "22",
+						"ingress.0.ipv6_cidr_blocks.#": "0",
+						"ingress.0.prefix_list_ids.#": "0",
+						"ingress.0.protocol": "tcp",
+						"ingress.0.security_groups.#": "0",
+						"ingress.0.self": "false",
+						"ingress.0.to_port": "22",
+						"name": "launch-wizard-3",
+						"name_prefix": "",
+						"owner_id": "339712936044",
+						"tags.%": "1",
+						"tags.Key": "Test",
+						"tags_all.%": "1",
+						"tags_all.Key": "Test",
+						"vpc_id": "vpc-0fca234102d21948e"
+					},
+					"meta": {
+						"schema_version": 1
+					},
+					"tainted": false
+				},
+				"ResourceName": "tfer--launch-wizard-3_sg-024754d3a5a15e59d",
+				"Provider": "aws",
+				"Item": {
+					"description": "launch-wizard-3 created 2024-12-19T19:14:02.833Z",
+					"egress": [
+						{
+							"cidr_blocks": [
+								"0.0.0.0/0"
+							],
+							"from_port": "0",
+							"protocol": "-1",
+							"self": "false",
+							"to_port": "0"
+						}
+					],
+					"ingress": [
+						{
+							"cidr_blocks": [
+								"0.0.0.0/0"
+							],
+							"from_port": "22",
+							"protocol": "tcp",
+							"self": "false",
+							"to_port": "22"
+						}
+					],
+					"name": "launch-wizard-3",
+					"tags": {
+						"Key": "Test"
+					},
+					"tags_all": {
+						"Key": "Test"
+					},
+					"vpc_id": "vpc-0fca234102d21948e"
+				},
+				"IgnoreKeys": [
+					"^id$",
+					"^owner_id$",
+					"^arn$"
+				],
+				"AllowEmptyValues": [
+					"tags."
+				],
+				"SlowQueryRequired": false,
+				"DataFiles": null
+			},
+			{
+				"InstanceInfo": {
+					"Id": "aws_security_group.tfer--launch-wizard-1_sg-0143f4385f63dfa7a",
+					"ModulePath": null,
+					"Type": "aws_security_group"
+				},
+				"InstanceState": {
+					"id": "sg-0143f4385f63dfa7a",
+					"attributes": {
+						"arn": "arn:aws:ec2:us-east-1:339712936044:security-group/sg-0143f4385f63dfa7a",
+						"description": "launch-wizard-1 created 2024-12-18T15:18:02.913Z",
+						"egress.#": "1",
+						"egress.0.cidr_blocks.#": "1",
+						"egress.0.cidr_blocks.0": "0.0.0.0/0",
+						"egress.0.description": "",
+						"egress.0.from_port": "0",
+						"egress.0.ipv6_cidr_blocks.#": "0",
+						"egress.0.prefix_list_ids.#": "0",
+						"egress.0.protocol": "-1",
+						"egress.0.security_groups.#": "0",
+						"egress.0.self": "false",
+						"egress.0.to_port": "0",
+						"id": "sg-0143f4385f63dfa7a",
+						"ingress.#": "1",
+						"ingress.0.cidr_blocks.#": "1",
+						"ingress.0.cidr_blocks.0": "0.0.0.0/0",
+						"ingress.0.description": "",
+						"ingress.0.from_port": "22",
+						"ingress.0.ipv6_cidr_blocks.#": "0",
+						"ingress.0.prefix_list_ids.#": "0",
+						"ingress.0.protocol": "tcp",
+						"ingress.0.security_groups.#": "0",
+						"ingress.0.self": "false",
+						"ingress.0.to_port": "22",
+						"name": "launch-wizard-1",
+						"name_prefix": "",
+						"owner_id": "339712936044",
+						"tags.%": "1",
+						"tags.Key": "Test",
+						"tags_all.%": "1",
+						"tags_all.Key": "Test",
+						"vpc_id": "vpc-0fca234102d21948e"
+					},
+					"meta": {
+						"schema_version": 1
+					},
+					"tainted": false
+				},
+				"ResourceName": "tfer--launch-wizard-1_sg-0143f4385f63dfa7a",
+				"Provider": "aws",
+				"Item": {
+					"description": "launch-wizard-1 created 2024-12-18T15:18:02.913Z",
+					"egress": [
+						{
+							"cidr_blocks": [
+								"0.0.0.0/0"
+							],
+							"from_port": "0",
+							"protocol": "-1",
+							"self": "false",
+							"to_port": "0"
+						}
+					],
+					"ingress": [
+						{
+							"cidr_blocks": [
+								"0.0.0.0/0"
+							],
+							"from_port": "22",
+							"protocol": "tcp",
+							"self": "false",
+							"to_port": "22"
+						}
+					],
+					"name": "launch-wizard-1",
+					"tags": {
+						"Key": "Test"
+					},
+					"tags_all": {
+						"Key": "Test"
+					},
+					"vpc_id": "vpc-0fca234102d21948e"
+				},
+				"IgnoreKeys": [
+					"^id$",
+					"^owner_id$",
+					"^arn$"
+				],
+				"AllowEmptyValues": [
+					"tags."
+				],
+				"SlowQueryRequired": false,
+				"DataFiles": null
+			},
+			{
+				"InstanceInfo": {
+					"Id": "aws_security_group.tfer--launch-wizard-5_sg-09ee3ddb6fb514879",
+					"ModulePath": null,
+					"Type": "aws_security_group"
+				},
+				"InstanceState": {
+					"id": "sg-09ee3ddb6fb514879",
+					"attributes": {
+						"arn": "arn:aws:ec2:us-east-1:339712936044:security-group/sg-09ee3ddb6fb514879",
+						"description": "launch-wizard-5 created 2025-06-05T11:27:23.663Z",
+						"egress.#": "1",
+						"egress.0.cidr_blocks.#": "1",
+						"egress.0.cidr_blocks.0": "0.0.0.0/0",
+						"egress.0.description": "",
+						"egress.0.from_port": "0",
+						"egress.0.ipv6_cidr_blocks.#": "1",
+						"egress.0.ipv6_cidr_blocks.0": "::/0",
+						"egress.0.prefix_list_ids.#": "0",
+						"egress.0.protocol": "-1",
+						"egress.0.security_groups.#": "0",
+						"egress.0.self": "false",
+						"egress.0.to_port": "0",
+						"id": "sg-09ee3ddb6fb514879",
+						"ingress.#": "2",
+						"ingress.0.cidr_blocks.#": "1",
+						"ingress.0.cidr_blocks.0": "0.0.0.0/0",
+						"ingress.0.description": "",
+						"ingress.0.from_port": "-1",
+						"ingress.0.ipv6_cidr_blocks.#": "0",
+						"ingress.0.prefix_list_ids.#": "0",
+						"ingress.0.protocol": "icmp",
+						"ingress.0.security_groups.#": "0",
+						"ingress.0.self": "false",
+						"ingress.0.to_port": "-1",
+						"ingress.1.cidr_blocks.#": "1",
+						"ingress.1.cidr_blocks.0": "0.0.0.0/0",
+						"ingress.1.description": "",
+						"ingress.1.from_port": "-1",
+						"ingress.1.ipv6_cidr_blocks.#": "0",
+						"ingress.1.prefix_list_ids.#": "0",
+						"ingress.1.protocol": "icmpv6",
+						"ingress.1.security_groups.#": "0",
+						"ingress.1.self": "false",
+						"ingress.1.to_port": "-1",
+						"name": "launch-wizard-5",
+						"name_prefix": "",
+						"owner_id": "339712936044",
+						"tags.%": "0",
+						"tags_all.%": "0",
+						"vpc_id": "vpc-0861ff04ba04ae9bd"
+					},
+					"meta": {
+						"schema_version": 1
+					},
+					"tainted": false
+				},
+				"ResourceName": "tfer--launch-wizard-5_sg-09ee3ddb6fb514879",
+				"Provider": "aws",
+				"Item": {
+					"description": "launch-wizard-5 created 2025-06-05T11:27:23.663Z",
+					"egress": [
+						{
+							"cidr_blocks": [
+								"0.0.0.0/0"
+							],
+							"from_port": "0",
+							"ipv6_cidr_blocks": [
+								"::/0"
+							],
+							"protocol": "-1",
+							"self": "false",
+							"to_port": "0"
+						}
+					],
+					"ingress": [
+						{
+							"cidr_blocks": [
+								"0.0.0.0/0"
+							],
+							"from_port": "-1",
+							"protocol": "icmp",
+							"self": "false",
+							"to_port": "-1"
+						},
+						{
+							"cidr_blocks": [
+								"0.0.0.0/0"
+							],
+							"from_port": "-1",
+							"protocol": "icmpv6",
+							"self": "false",
+							"to_port": "-1"
+						}
+					],
+					"name": "launch-wizard-5",
+					"vpc_id": "vpc-0861ff04ba04ae9bd"
+				},
+				"IgnoreKeys": [
+					"^id$",
+					"^owner_id$",
+					"^arn$"
+				],
+				"AllowEmptyValues": [
+					"tags."
+				],
+				"SlowQueryRequired": false,
+				"DataFiles": null
+			},
+			{
+				"InstanceInfo": {
+					"Id": "aws_security_group.tfer--all-out-ssh-in-sg_sg-061698ee1e25d2fad",
+					"ModulePath": null,
+					"Type": "aws_security_group"
+				},
+				"InstanceState": {
+					"id": "sg-061698ee1e25d2fad",
+					"attributes": {
+						"arn": "arn:aws:ec2:us-east-1:339712936044:security-group/sg-061698ee1e25d2fad",
+						"description": "All outbound and ssh inbound rule",
+						"egress.#": "1",
+						"egress.0.cidr_blocks.#": "1",
+						"egress.0.cidr_blocks.0": "0.0.0.0/0",
+						"egress.0.description": "",
+						"egress.0.from_port": "0",
+						"egress.0.ipv6_cidr_blocks.#": "0",
+						"egress.0.prefix_list_ids.#": "0",
+						"egress.0.protocol": "-1",
+						"egress.0.security_groups.#": "0",
+						"egress.0.self": "false",
+						"egress.0.to_port": "0",
+						"id": "sg-061698ee1e25d2fad",
+						"ingress.#": "6",
+						"ingress.0.cidr_blocks.#": "1",
+						"ingress.0.cidr_blocks.0": "0.0.0.0/0",
+						"ingress.0.description": "",
+						"ingress.0.from_port": "22",
+						"ingress.0.ipv6_cidr_blocks.#": "0",
+						"ingress.0.prefix_list_ids.#": "0",
+						"ingress.0.protocol": "tcp",
+						"ingress.0.security_groups.#": "0",
+						"ingress.0.self": "false",
+						"ingress.0.to_port": "22",
+						"ingress.1.cidr_blocks.#": "1",
+						"ingress.1.cidr_blocks.0": "0.0.0.0/0",
+						"ingress.1.description": "",
+						"ingress.1.from_port": "3000",
+						"ingress.1.ipv6_cidr_blocks.#": "0",
+						"ingress.1.prefix_list_ids.#": "0",
+						"ingress.1.protocol": "tcp",
+						"ingress.1.security_groups.#": "0",
+						"ingress.1.self": "false",
+						"ingress.1.to_port": "3000",
+						"ingress.2.cidr_blocks.#": "1",
+						"ingress.2.cidr_blocks.0": "0.0.0.0/0",
+						"ingress.2.description": "",
+						"ingress.2.from_port": "5000",
+						"ingress.2.ipv6_cidr_blocks.#": "0",
+						"ingress.2.prefix_list_ids.#": "0",
+						"ingress.2.protocol": "tcp",
+						"ingress.2.security_groups.#": "0",
+						"ingress.2.self": "false",
+						"ingress.2.to_port": "5000",
+						"ingress.3.cidr_blocks.#": "1",
+						"ingress.3.cidr_blocks.0": "0.0.0.0/0",
+						"ingress.3.description": "",
+						"ingress.3.from_port": "8080",
+						"ingress.3.ipv6_cidr_blocks.#": "0",
+						"ingress.3.prefix_list_ids.#": "0",
+						"ingress.3.protocol": "tcp",
+						"ingress.3.security_groups.#": "0",
+						"ingress.3.self": "false",
+						"ingress.3.to_port": "8080",
+						"ingress.4.cidr_blocks.#": "1",
+						"ingress.4.cidr_blocks.0": "0.0.0.0/0",
+						"ingress.4.description": "",
+						"ingress.4.from_port": "9090",
+						"ingress.4.ipv6_cidr_blocks.#": "0",
+						"ingress.4.prefix_list_ids.#": "0",
+						"ingress.4.protocol": "tcp",
+						"ingress.4.security_groups.#": "0",
+						"ingress.4.self": "false",
+						"ingress.4.to_port": "9090",
+						"ingress.5.cidr_blocks.#": "1",
+						"ingress.5.cidr_blocks.0": "0.0.0.0/0",
+						"ingress.5.description": "",
+						"ingress.5.from_port": "9100",
+						"ingress.5.ipv6_cidr_blocks.#": "0",
+						"ingress.5.prefix_list_ids.#": "0",
+						"ingress.5.protocol": "tcp",
+						"ingress.5.security_groups.#": "0",
+						"ingress.5.self": "false",
+						"ingress.5.to_port": "9100",
+						"name": "all-out-ssh-in-sg",
+						"name_prefix": "",
+						"owner_id": "339712936044",
+						"tags.%": "0",
+						"tags_all.%": "0",
+						"vpc_id": "vpc-0fca234102d21948e"
+					},
+					"meta": {
+						"schema_version": 1
+					},
+					"tainted": false
+				},
+				"ResourceName": "tfer--all-out-ssh-in-sg_sg-061698ee1e25d2fad",
+				"Provider": "aws",
+				"Item": {
+					"description": "All outbound and ssh inbound rule",
+					"egress": [
+						{
+							"cidr_blocks": [
+								"0.0.0.0/0"
+							],
+							"from_port": "0",
+							"protocol": "-1",
+							"self": "false",
+							"to_port": "0"
+						}
+					],
+					"ingress": [
+						{
+							"cidr_blocks": [
+								"0.0.0.0/0"
+							],
+							"from_port": "22",
+							"protocol": "tcp",
+							"self": "false",
+							"to_port": "22"
+						},
+						{
+							"cidr_blocks": [
+								"0.0.0.0/0"
+							],
+							"from_port": "3000",
+							"protocol": "tcp",
+							"self": "false",
+							"to_port": "3000"
+						},
+						{
+							"cidr_blocks": [
+								"0.0.0.0/0"
+							],
+							"from_port": "5000",
+							"protocol": "tcp",
+							"self": "false",
+							"to_port": "5000"
+						},
+						{
+							"cidr_blocks": [
+								"0.0.0.0/0"
+							],
+							"from_port": "8080",
+							"protocol": "tcp",
+							"self": "false",
+							"to_port": "8080"
+						},
+						{
+							"cidr_blocks": [
+								"0.0.0.0/0"
+							],
+							"from_port": "9090",
+							"protocol": "tcp",
+							"self": "false",
+							"to_port": "9090"
+						},
+						{
+							"cidr_blocks": [
+								"0.0.0.0/0"
+							],
+							"from_port": "9100",
+							"protocol": "tcp",
+							"self": "false",
+							"to_port": "9100"
+						}
+					],
+					"name": "all-out-ssh-in-sg",
+					"vpc_id": "vpc-0fca234102d21948e"
+				},
+				"IgnoreKeys": [
+					"^id$",
+					"^owner_id$",
+					"^arn$"
+				],
+				"AllowEmptyValues": [
+					"tags."
+				],
+				"SlowQueryRequired": false,
+				"DataFiles": null
+			},
+			{
+				"InstanceInfo": {
+					"Id": "aws_security_group.tfer--launch-wizard-2_sg-0fe8c7481df4ad68a",
+					"ModulePath": null,
+					"Type": "aws_security_group"
+				},
+				"InstanceState": {
+					"id": "sg-0fe8c7481df4ad68a",
+					"attributes": {
+						"arn": "arn:aws:ec2:us-east-1:339712936044:security-group/sg-0fe8c7481df4ad68a",
+						"description": "launch-wizard-2 created 2024-12-18T15:20:43.521Z",
+						"egress.#": "1",
+						"egress.0.cidr_blocks.#": "1",
+						"egress.0.cidr_blocks.0": "0.0.0.0/0",
+						"egress.0.description": "",
+						"egress.0.from_port": "0",
+						"egress.0.ipv6_cidr_blocks.#": "0",
+						"egress.0.prefix_list_ids.#": "0",
+						"egress.0.protocol": "-1",
+						"egress.0.security_groups.#": "0",
+						"egress.0.self": "false",
+						"egress.0.to_port": "0",
+						"id": "sg-0fe8c7481df4ad68a",
+						"ingress.#": "1",
+						"ingress.0.cidr_blocks.#": "1",
+						"ingress.0.cidr_blocks.0": "0.0.0.0/0",
+						"ingress.0.description": "",
+						"ingress.0.from_port": "22",
+						"ingress.0.ipv6_cidr_blocks.#": "0",
+						"ingress.0.prefix_list_ids.#": "0",
+						"ingress.0.protocol": "tcp",
+						"ingress.0.security_groups.#": "0",
+						"ingress.0.self": "false",
+						"ingress.0.to_port": "22",
+						"name": "launch-wizard-2",
+						"name_prefix": "",
+						"owner_id": "339712936044",
+						"tags.%": "1",
+						"tags.Key": "Test",
+						"tags_all.%": "1",
+						"tags_all.Key": "Test",
+						"vpc_id": "vpc-0fca234102d21948e"
+					},
+					"meta": {
+						"schema_version": 1
+					},
+					"tainted": false
+				},
+				"ResourceName": "tfer--launch-wizard-2_sg-0fe8c7481df4ad68a",
+				"Provider": "aws",
+				"Item": {
+					"description": "launch-wizard-2 created 2024-12-18T15:20:43.521Z",
+					"egress": [
+						{
+							"cidr_blocks": [
+								"0.0.0.0/0"
+							],
+							"from_port": "0",
+							"protocol": "-1",
+							"self": "false",
+							"to_port": "0"
+						}
+					],
+					"ingress": [
+						{
+							"cidr_blocks": [
+								"0.0.0.0/0"
+							],
+							"from_port": "22",
+							"protocol": "tcp",
+							"self": "false",
+							"to_port": "22"
+						}
+					],
+					"name": "launch-wizard-2",
+					"tags": {
+						"Key": "Test"
+					},
+					"tags_all": {
+						"Key": "Test"
+					},
+					"vpc_id": "vpc-0fca234102d21948e"
+				},
+				"IgnoreKeys": [
+					"^id$",
+					"^owner_id$",
+					"^arn$"
+				],
+				"AllowEmptyValues": [
+					"tags."
+				],
+				"SlowQueryRequired": false,
+				"DataFiles": null
+			},
+			{
+				"InstanceInfo": {
+					"Id": "aws_security_group.tfer--allow_web_traffic_sg-0b3aee3c1553c23ad",
+					"ModulePath": null,
+					"Type": "aws_security_group"
+				},
+				"InstanceState": {
+					"id": "sg-0b3aee3c1553c23ad",
+					"attributes": {
+						"arn": "arn:aws:ec2:us-east-1:339712936044:security-group/sg-0b3aee3c1553c23ad",
+						"description": "Allow HTTP, HTTPS, and SSH traffic",
+						"egress.#": "1",
+						"egress.0.cidr_blocks.#": "1",
+						"egress.0.cidr_blocks.0": "0.0.0.0/0",
+						"egress.0.description": "",
+						"egress.0.from_port": "0",
+						"egress.0.ipv6_cidr_blocks.#": "0",
+						"egress.0.prefix_list_ids.#": "0",
+						"egress.0.protocol": "-1",
+						"egress.0.security_groups.#": "0",
+						"egress.0.self": "false",
+						"egress.0.to_port": "0",
+						"id": "sg-0b3aee3c1553c23ad",
+						"ingress.#": "3",
+						"ingress.0.cidr_blocks.#": "1",
+						"ingress.0.cidr_blocks.0": "0.0.0.0/0",
+						"ingress.0.description": "",
+						"ingress.0.from_port": "22",
+						"ingress.0.ipv6_cidr_blocks.#": "0",
+						"ingress.0.prefix_list_ids.#": "0",
+						"ingress.0.protocol": "tcp",
+						"ingress.0.security_groups.#": "0",
+						"ingress.0.self": "false",
+						"ingress.0.to_port": "22",
+						"ingress.1.cidr_blocks.#": "1",
+						"ingress.1.cidr_blocks.0": "0.0.0.0/0",
+						"ingress.1.description": "",
+						"ingress.1.from_port": "443",
+						"ingress.1.ipv6_cidr_blocks.#": "0",
+						"ingress.1.prefix_list_ids.#": "0",
+						"ingress.1.protocol": "tcp",
+						"ingress.1.security_groups.#": "0",
+						"ingress.1.self": "false",
+						"ingress.1.to_port": "443",
+						"ingress.2.cidr_blocks.#": "1",
+						"ingress.2.cidr_blocks.0": "0.0.0.0/0",
+						"ingress.2.description": "",
+						"ingress.2.from_port": "80",
+						"ingress.2.ipv6_cidr_blocks.#": "0",
+						"ingress.2.prefix_list_ids.#": "0",
+						"ingress.2.protocol": "tcp",
+						"ingress.2.security_groups.#": "0",
+						"ingress.2.self": "false",
+						"ingress.2.to_port": "80",
+						"name": "allow_web_traffic",
+						"name_prefix": "",
+						"owner_id": "339712936044",
+						"tags.%": "1",
+						"tags.Name": "allow_web_traffic",
+						"tags_all.%": "1",
+						"tags_all.Name": "allow_web_traffic",
+						"vpc_id": "vpc-0861ff04ba04ae9bd"
+					},
+					"meta": {
+						"schema_version": 1
+					},
+					"tainted": false
+				},
+				"ResourceName": "tfer--allow_web_traffic_sg-0b3aee3c1553c23ad",
+				"Provider": "aws",
+				"Item": {
+					"description": "Allow HTTP, HTTPS, and SSH traffic",
+					"egress": [
+						{
+							"cidr_blocks": [
+								"0.0.0.0/0"
+							],
+							"from_port": "0",
+							"protocol": "-1",
+							"self": "false",
+							"to_port": "0"
+						}
+					],
+					"ingress": [
+						{
+							"cidr_blocks": [
+								"0.0.0.0/0"
+							],
+							"from_port": "22",
+							"protocol": "tcp",
+							"self": "false",
+							"to_port": "22"
+						},
+						{
+							"cidr_blocks": [
+								"0.0.0.0/0"
+							],
+							"from_port": "443",
+							"protocol": "tcp",
+							"self": "false",
+							"to_port": "443"
+						},
+						{
+							"cidr_blocks": [
+								"0.0.0.0/0"
+							],
+							"from_port": "80",
+							"protocol": "tcp",
+							"self": "false",
+							"to_port": "80"
+						}
+					],
+					"name": "allow_web_traffic",
+					"tags": {
+						"Name": "allow_web_traffic"
+					},
+					"tags_all": {
+						"Name": "allow_web_traffic"
+					},
+					"vpc_id": "vpc-0861ff04ba04ae9bd"
+				},
+				"IgnoreKeys": [
+					"^id$",
+					"^owner_id$",
+					"^arn$"
+				],
+				"AllowEmptyValues": [
+					"tags."
+				],
+				"SlowQueryRequired": false,
+				"DataFiles": null
+			}
+		]
+	}
+}

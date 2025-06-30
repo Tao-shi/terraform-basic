@@ -1,13 +1,5 @@
 terraform {
 
-  # backend "s3" {
-  #   bucket         = "terraform-state-bucket"    # Replace with your S3 bucket name
-  #   key            = "path/to/terraform.tfstate" # Path to store the state file
-  #   region         = "us-east-1"                 # Replace with your AWS region
-  #   encrypt        = true                        # Encrypt the state file at rest
-  #   dynamodb_table = "terraform-lock-table"      # Replace with your DynamoDB table name
-  # }
-
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -29,17 +21,17 @@ data "aws_vpc" "tao_vpc" {
 #   availability_zone = "us-east-1a"
 # }
 
-resource "aws_subnet" "tao_pub_subnet" {
-  vpc_id                          = data.aws_vpc.tao_vpc.id
-  cidr_block                      = "10.23.0.0/28"
-  assign_ipv6_address_on_creation = true
-  map_public_ip_on_launch         = true
-  ipv6_cidr_block                 = "2600:1f18:905:d900::/56"
-  availability_zone               = "us-east-1a"
-  tags = {
-    Name = "tao-vpc"
-  }
-}
+# resource "aws_subnet" "tao_pub_subnet" {
+#   vpc_id                          = data.aws_vpc.tao_vpc.id
+#   cidr_block                      = "10.23.0.0/28"
+#   assign_ipv6_address_on_creation = true
+#   map_public_ip_on_launch         = true
+#   ipv6_cidr_block                 = "2600:1f18:905:d900::/56"
+#   availability_zone               = "us-east-1a"
+#   tags = {
+#     Name = "tao-vpc"
+#   }
+# }
 
 # resource "aws_default_subnet" "default_az1b" {
 #   availability_zone = "us-east-1b"
@@ -56,16 +48,16 @@ module "security_group" {
 
 }
 
-module "web_servers" {
-  source                 = "./modules/web-servers"
-  vpc_security_group_ids = [module.security_group.sg_id]
-  ami                    = var.ami_id
-  instance_name          = var.instance_name
-  instance_type          = var.instance_type
-  priv_key_name          = var.key_name
-  subnet_id              = aws_subnet.tao_pub_subnet.id
-  depends_on             = [aws_subnet.tao_pub_subnet]
-}
+# module "web_servers" {
+#   source                 = "./modules/web-servers"
+#   vpc_security_group_ids = [module.security_group.sg_id]
+#   ami                    = var.ami_id
+#   instance_name          = var.instance_name
+#   instance_type          = var.instance_type
+#   priv_key_name          = var.key_name
+#   subnet_id              = aws_subnet.tao_pub_subnet.id
+#   depends_on             = [aws_subnet.tao_pub_subnet]
+# }
 
 # module "lb" {
 #   source             = "./modules/lb"
