@@ -1,0 +1,24 @@
+{
+    "TransitGatewayAttachments": [
+        {
+            "TransitGatewayAttachmentId": "tgw-attach-0453935aa9675e79b",
+            "TransitGatewayId": "tgw-0f77d962ed25c179a",
+            "TransitGatewayOwnerId": "339712936044",
+            "ResourceOwnerId": "339712936044",
+            "ResourceType": "vpc",
+            "ResourceId": "vpc-0861ff04ba04ae9bd",
+            "State": "available",
+            "Association": {
+                "TransitGatewayRouteTableId": "tgw-rtb-0b188979ab0d24a0b",
+                "State": "associated"
+            },
+            "CreationTime": "2025-07-01T14:01:07+00:00",
+            "Tags": [
+                {
+                    "Key": "Name",
+                    "Value": "tgw-attch-001"
+                }
+            ]
+        }
+    ]
+}

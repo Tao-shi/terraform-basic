@@ -3,7 +3,7 @@ import subprocess
 import os
 
 # Directory to store final .tf files
-output_dir = '/home/taofiq.subair@Interswitchng.com/projects-gh/terraform-basic'
+output_dir = '/home/taofiq.subair/projects-gh/terraform-basic'
 
 res_type = "load_balancer"
 import_filename = f'{res_type}s_imported.tf'
@@ -14,7 +14,7 @@ import_count = 0
 os.makedirs(output_dir, exist_ok=True)
 
 # Read subnets from JSON file
-with open(f"{output_dir}/scripts/instances/{res_type}s.json") as f:
+with open(f"{output_dir}/scripts/load-balancers/{res_type}s.json") as f:
     data = json.load(f)
 
 # Get value of Name tag
@@ -38,50 +38,17 @@ def clean_state_show_output(output, tf_name):
     skip_stack_depth = 0    
     skip_block_start_depth = None    
     skip_keys = {
-    # "arn",
-    # "id",
-    # "private_dns",
-    # "public_dns",
-    # "private_ip",
-    # "public_ip",
-    # "ipv6_addresses",
-    # "primary_network_interface_id",
-    # "password_data",
-    # "key_name", 
-    # "instance_state",
-    # "availability_zone",
-    # "placement_group",
-    # "tenancy",
-    # "cpu_core_count",
-    # "cpu_threads_per_core",
-    # "get_password_data",
-    # "security_groups",
-    # "tags_all",
-    # "host_id",
-    # "ebs_optimized",
-    # "monitoring",
-    # "credit_specification",
-    # "source_dest_check",
-    # "associate_public_ip_address", 
-    # "network_interface_id", 
-    # "ami_launch_index",
-    # "user_data_base64",
-    # "cpu_options",
-    # "instance_initiated_shutdown_behavior",
-    # "disable_api_stop",
-    # "disable_api_termination",
-    # "hibernation",
-    # "iam_instance_profile",
-    # "outpost_arn",
-    # "placement_partition_number",
-    # "spot_instance_request_id",
-    # "maintenance_options",
-    # "private_dns_name_options",
-    # "metadata_options",
-    # "maintenance_options",
-    # "enclave_options",
-    # "capacity_reservation_specification",
-    # "root_block_device"
+    "arn",
+    "arn_suffix",
+    "dns_name",
+    "id",
+    "id",
+    "subnets",
+    "vpc_id",
+    "zone_id",
+    "public_dns",
+    "access_logs",
+    "connection_logs",
     }
 
     for line in output.splitlines():
@@ -153,49 +120,45 @@ if os.path.isfile(os.path.join(output_dir, import_filename)):
     os.remove(os.path.join(output_dir, import_filename))
 
 # Iterate over all instances
-for reservation in data["Reservations"]:
-    for instance in reservation["Instances"]:
-        inst_id = instance["InstanceId"]
-        vpc_id = instance.get("VpcId", "null")
+for lb in data["LoadBalancers"]:
+    lb_arn = lb["LoadBalancerArn"]
+    vpc_id = lb.get("VpcId", "null")
 
-        # Prefer tag "Name" for tf_name, fallback to instance ID
-        name = get_tag(instance.get("Tags", []), "Name") or inst_id
-        tf_name = name.replace("-", "_").replace(" ", "_").lower()
+    # Prefer tag "Name" for tf_name, fallback to instance ID
+    name = lb["LoadBalancerName"] or get_tag(lb.get("Tags", []), "Name") or lb_arn
+    tf_name = name.replace("-", "_").replace(" ", "_").lower()
 
-        # Create Terraform block
-        tf_block = f'''
-resource "aws_instance" "{tf_name}" {{
-  ami                         = "ami-placeholder"
-  instance_type               = "t2.micro"
-  subnet_id                   = "subnet-placeholder"
+    # Create Terraform block
+    tf_block = f'''
+resource "aws_lb" "{tf_name}" {{
 }}
 '''
     
     with open(os.path.join(output_dir, minimal_filename), "w") as f:
         f.write(tf_block)
     # Run the terraform import
-    import_result = subprocess.run(["terraform", f"-chdir={output_dir}", "import", f"aws_instance.{tf_name}", inst_id, "-no-color"], capture_output=True, text=True)
+    import_result = subprocess.run(["terraform", f"-chdir={output_dir}", "import", f"aws_lb.{tf_name}", lb_arn, "-no-color"], capture_output=True, text=True)
     if import_result.stderr == '':
-       print(f"Import of aws_instance.{tf_name} {inst_id} successful!")
+       print(f"Import of aws_lb.{tf_name} {lb_arn} successful!")
        import_count += 1
     else:
-       print(f"Import of aws_instance.{tf_name} {inst_id} failed!")
+       print(f"Import of aws_lb.{tf_name} {lb_arn} failed!")
        print(import_result.stderr)
     
     print("---------------------------------------------------------------------------------------------------")
 
     # Unimport resources (optional)
-    # subprocess.run(["terraform", f"-chdir={output_dir}", "state", "rm", f"aws_instance.{tf_name}"])
+    # subprocess.run(["terraform", f"-chdir={output_dir}", "state", "rm", f"aws_lb.{tf_name}"])
 
     # Use state show command to build resource block
     if import_result.returncode != 1 :
-        build_result = subprocess.run(["terraform", f"-chdir={output_dir}", "state", "show", f"aws_instance.{tf_name}", "-no-color"], capture_output=True, text=True)
+        build_result = subprocess.run(["terraform", f"-chdir={output_dir}", "state", "show", f"aws_lb.{tf_name}", "-no-color"], capture_output=True, text=True)
         if build_result.returncode == 0:
             cleaned_output = clean_state_show_output(build_result.stdout, tf_name)
             with open(os.path.join(output_dir, import_filename), "a") as tf_file:
                 tf_file.write(cleaned_output + "\n\n" ) 
         else:
-            print(f"Error building resource block for aws_instance.{tf_name} {inst_id}!")
+            print(f"Error building resource block for aws_lb.{tf_name} {lb_arn}!")
 
 print(f"Successfully imported {import_count} {res_type}(s).")
 

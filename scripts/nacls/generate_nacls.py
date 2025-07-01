@@ -3,7 +3,7 @@ import subprocess
 import os
 
 # Directory to store final .tf files
-output_dir = '/home/taofiq.subair@Interswitchng.com/projects-gh/terraform-basic'
+output_dir = '/home/taofiq.subair/projects-gh/terraform-basic'
 
 res_type = "nacl"
 import_filename = f'{res_type}s_imported.tf'
@@ -29,7 +29,7 @@ def format_tf_name(name):
     return name.replace("-", "_").replace(" ", "_").lower()  
 
 # Remove unwanted resource attributes
-def clean_state_show_output(output, tf_name):
+def clean_state_show_output(output, tf_name, is_default):
     in_block = False
     brace_depth = 0
     in_list = 0
@@ -37,22 +37,14 @@ def clean_state_show_output(output, tf_name):
     skip_block = False
     skip_stack_depth = 0    
     skip_keys = {
-    # "arn",
-    # "id",
-    # "tags_all",
-    # "customer_owned_ipv4_pool",
-    # "ipv6_native",
-    # "map_customer_owned_ip_on_launch",
-    # "outpost_arn",
-    # "private_dns_hostname_type_on_launch",
-    # "owner_id",
-    # "owner_ienable_dns64d",
-    # "enable_resource_name_dns_a_record_on_launch",
-    # "enable_resource_name_dns_aaaa_record_on_launch",
-    # "enable_lni_at_device_index",
-    # "availability_zone_id",
-    # "ipv6_cidr_block_association_id",
+    "arn",
+    "id",
+    "owner_id",
+    "vpc_id",
+    "tags_all",
+    f"id" if {is_default} else "default_network_acl_id"
     }
+
 
     for line in output.splitlines():
         stripped = line.strip()
@@ -125,9 +117,9 @@ if os.path.isfile(os.path.join(output_dir, import_filename)):
 # Iterate over all instances
 for nacl in data["NetworkAcls"]:
     nacl_id = nacl["NetworkAclId"]
+    is_default = nacl["IsDefault"] 
     vpc_id = nacl["VpcId"]
-    nacl_type = "aws_default_network_acl" if nacl["IsDefault"] else "aws_network_acl"
-    print(nacl_type)
+    nacl_type = "aws_default_network_acl" if {is_default} else "aws_network_acl"
     # Prefer tag "Name" for tf_name, fallback to instance ID
     name = get_tag(nacl.get("Tags", []), "Name") or nacl_id
     tf_name = name.replace("-", "_").replace(" ", "_").lower()
@@ -136,6 +128,7 @@ for nacl in data["NetworkAcls"]:
     tf_block = f'''
 resource "{nacl_type}" "{tf_name}" {{
   vpc_id                  = "{vpc_id}"
+  default_network_acl_id = "id"
 }}
 '''
     
@@ -159,7 +152,7 @@ resource "{nacl_type}" "{tf_name}" {{
     if import_result.returncode != 1 :
         build_result = subprocess.run(["terraform", f"-chdir={output_dir}", "state", "show", f"{nacl_type}.{tf_name}", "-no-color"], capture_output=True, text=True)
         if build_result.returncode == 0:
-            cleaned_output = clean_state_show_output(build_result.stdout, tf_name)
+            cleaned_output = clean_state_show_output(build_result.stdout, tf_name, is_default)
             with open(os.path.join(output_dir, import_filename), "a") as tf_file:
                 tf_file.write(cleaned_output + "\n\n" ) 
         else:

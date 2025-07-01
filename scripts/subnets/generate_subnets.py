@@ -3,7 +3,7 @@ import subprocess
 import os
 
 # Directory to store final .tf files
-output_dir = '/home/taofiq.subair@Interswitchng.com/projects-gh/terraform-basic'
+output_dir = '/home/taofiq.subair/projects-gh/terraform-basic'
 
 res_type = "subnet"
 import_filename = f'{res_type}s_imported.tf'
