@@ -1,0 +1,63 @@
+{
+    "Vpcs": [
+        {
+            "CidrBlock": "10.23.0.0/28",
+            "DhcpOptionsId": "dopt-05d4e6cd6a8c6ccc8",
+            "State": "available",
+            "VpcId": "vpc-0861ff04ba04ae9bd",
+            "OwnerId": "339712936044",
+            "InstanceTenancy": "default",
+            "Ipv6CidrBlockAssociationSet": [
+                {
+                    "AssociationId": "vpc-cidr-assoc-0302ab123cd88cfcd",
+                    "Ipv6CidrBlock": "2600:1f18:905:d900::/56",
+                    "Ipv6CidrBlockState": {
+                        "State": "associated"
+                    },
+                    "NetworkBorderGroup": "us-east-1",
+                    "Ipv6Pool": "Amazon"
+                }
+            ],
+            "CidrBlockAssociationSet": [
+                {
+                    "AssociationId": "vpc-cidr-assoc-05f654a6ffbba3f33",
+                    "CidrBlock": "10.23.0.0/28",
+                    "CidrBlockState": {
+                        "State": "associated"
+                    }
+                }
+            ],
+            "IsDefault": false,
+            "Tags": [
+                {
+                    "Key": "Name",
+                    "Value": "tao-test-vpc"
+                }
+            ]
+        },
+        {
+            "CidrBlock": "172.31.0.0/16",
+            "DhcpOptionsId": "dopt-05d4e6cd6a8c6ccc8",
+            "State": "available",
+            "VpcId": "vpc-0fca234102d21948e",
+            "OwnerId": "339712936044",
+            "InstanceTenancy": "default",
+            "CidrBlockAssociationSet": [
+                {
+                    "AssociationId": "vpc-cidr-assoc-0ddcb3394a143029c",
+                    "CidrBlock": "172.31.0.0/16",
+                    "CidrBlockState": {
+                        "State": "associated"
+                    }
+                }
+            ],
+            "IsDefault": true,
+            "Tags": [
+                {
+                    "Key": "Name",
+                    "Value": "Default VPC"
+                }
+            ]
+        }
+    ]
+}
