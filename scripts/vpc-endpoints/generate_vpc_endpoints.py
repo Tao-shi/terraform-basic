@@ -3,7 +3,7 @@ import subprocess
 import os
 
 # Directory to store final .tf files
-output_dir = '/home/taofiq.subair/projects-gh/terraform-basic'
+output_dir = '/home/projects-gh/terraform-basic'
 
 res_type = "vpc_endpoint"
 import_filename = f'{res_type}s_imported.tf'
@@ -14,7 +14,7 @@ import_count = 0
 os.makedirs(output_dir, exist_ok=True)
 
 # Read subnets from JSON file
-with open(f"{output_dir}/scripts/vpc_endpoints/{res_type}s.json") as f:
+with open(f"{output_dir}/scripts/vpc-endpoints/{res_type}s.json") as f:
     data = json.load(f)
 
 # Get value of Name tag
@@ -37,11 +37,16 @@ def clean_state_show_output(output, tf_name):
     skip_block = False
     skip_stack_depth = 0    
     skip_keys = {
-    # "arn",
-    # "id",
-    # "owner_id",
-    # "vpc_owner_id",
-    # "tags_all",
+    "arn",
+    "cidr_blocks",
+    "dns_entry",
+    "id",
+    "network_interface_ids",
+    "owner_id",
+    "tags_all",
+    "prefix_list_id",
+    "state",
+    "requester_managed",
     }
 
 
@@ -124,11 +129,13 @@ for vpce in data["VpcEndpoints"]:
     tf_block = f'''
 resource "aws_vpc_endpoint" "{tf_name}" {{
   vpc_id                  = "vpc"
+  service_name = "serv"
 }}
 '''
     
     with open(os.path.join(output_dir, minimal_filename), "w") as f:
         f.write(tf_block)
+        
     # Run the terraform import
     import_result = subprocess.run(["terraform", f"-chdir={output_dir}", "import", f"aws_vpc_endpoint.{tf_name}", vpce_id, "-no-color"], capture_output=True, text=True)
     if import_result.stderr == '':
@@ -139,6 +146,10 @@ resource "aws_vpc_endpoint" "{tf_name}" {{
        print(import_result.stderr)
     
     print("---------------------------------------------------------------------------------------------------")
+    
+    # Delete tf file that contains minimal resource blocks            
+    if os.path.isfile(os.path.join(output_dir, minimal_filename)):
+        os.remove(os.path.join(output_dir, minimal_filename))
 
     # Unimport resources (optional)
     # subprocess.run(["terraform", f"-chdir={output_dir}", "state", "rm", f"aws_vpc_endpoint.{tf_name}"])
@@ -152,8 +163,9 @@ resource "aws_vpc_endpoint" "{tf_name}" {{
                 tf_file.write(cleaned_output + "\n\n" ) 
         else:
             print(f"Error building resource block for aws_vpc_endpoint.{tf_name} {vpce_id}!")
+            print(build_result.stderr)
 
 print(f"Successfully imported {import_count} {res_type}(s).")
 
 # Delete tf file that contains minimal resource blocks            
-os.remove(os.path.join(output_dir, minimal_filename))
+# os.remove(os.path.join(output_dir, minimal_filename))

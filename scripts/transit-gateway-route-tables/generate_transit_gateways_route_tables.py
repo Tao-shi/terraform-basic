@@ -3,7 +3,7 @@ import subprocess
 import os
 
 # Directory to store final .tf files
-output_dir = '/home/taofiq.subair/projects-gh/terraform-basic'
+output_dir = '/home/projects-gh/terraform-basic'
 
 res_type = "transit_gateway_route_table"
 import_filename = f'{res_type}s_imported.tf'
@@ -37,11 +37,11 @@ def clean_state_show_output(output, tf_name):
     skip_block = False
     skip_stack_depth = 0    
     skip_keys = {
-    # "arn",
-    # "id",
-    # "owner_id",
-    # "vpc_owner_id",
-    # "tags_all",
+    "arn",
+    "id",
+    "default_association_route_table",
+    "default_propagation_route_table",
+    "tags_all",
     }
 
 
@@ -117,12 +117,13 @@ if os.path.isfile(os.path.join(output_dir, import_filename)):
 for tgw_rt in data["TransitGatewayRouteTables"]:
     tgw_rt_id = tgw_rt["TransitGatewayRouteTableId"]
     # Prefer tag "Name" for tf_name, fallback to instance ID
-    name = get_tag(vpce.get("Tags", []), "Name") or tgw_rt_id
+    name = get_tag(tgw_rt.get("Tags", []), "Name") or tgw_rt_id
     tf_name = name.replace("-", "_").replace(" ", "_").lower()
 
     # Create Terraform block
     tf_block = f'''
 resource "aws_ec2_transit_gateway_route_table" "{tf_name}" {{
+  transit_gateway_id = "tgw"
 }}
 '''
     
@@ -138,6 +139,10 @@ resource "aws_ec2_transit_gateway_route_table" "{tf_name}" {{
        print(import_result.stderr)
     
     print("---------------------------------------------------------------------------------------------------")
+
+    # Delete tf file that contains minimal resource blocks            
+    if os.path.isfile(os.path.join(output_dir, minimal_filename)):
+        os.remove(os.path.join(output_dir, minimal_filename))
 
     # Unimport resources (optional)
     # subprocess.run(["terraform", f"-chdir={output_dir}", "state", "rm", f"aws_ec2_transit_gateway_route_table.{tf_name}"])
@@ -155,4 +160,4 @@ resource "aws_ec2_transit_gateway_route_table" "{tf_name}" {{
 print(f"Successfully imported {import_count} {res_type}(s).")
 
 # Delete tf file that contains minimal resource blocks            
-os.remove(os.path.join(output_dir, minimal_filename))
+# os.remove(os.path.join(output_dir, minimal_filename))

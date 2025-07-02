@@ -1,0 +1,18 @@
+{
+    "TransitGatewayRouteTables": [
+        {
+            "TransitGatewayRouteTableId": "tgw-rtb-011563896aab49b1a",
+            "TransitGatewayId": "tgw-0a2473408d59ef1f4",
+            "State": "available",
+            "DefaultAssociationRouteTable": true,
+            "DefaultPropagationRouteTable": true,
+            "CreationTime": "2025-07-02T18:20:00+00:00",
+            "Tags": [
+                {
+                    "Key": "Name",
+                    "Value": "tgw-002-rt"
+                }
+            ]
+        }
+    ]
+}
