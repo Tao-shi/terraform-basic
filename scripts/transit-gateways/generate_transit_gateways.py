@@ -117,7 +117,7 @@ if os.path.isfile(os.path.join(output_dir, import_filename)):
 for tgw in data["TransitGateways"]:
     tgw_id = tgw["TransitGatewayId"]
     # Prefer tag "Name" for tf_name, fallback to instance ID
-    name = get_tag(vpce.get("Tags", []), "Name") or tgw_id
+    name = get_tag(tgw_id.get("Tags", []), "Name") or tgw_id
     tf_name = name.replace("-", "_").replace(" ", "_").lower()
 
     # Create Terraform block
